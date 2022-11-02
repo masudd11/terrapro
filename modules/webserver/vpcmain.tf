@@ -1,8 +1,8 @@
 resource "aws_vpc" "myvpc" {
-  cidr_block       = "10.0.0.0/26"
-  instance_tenancy = "default"
+  cidr_block           = "10.0.0.0/26"
+  instance_tenancy     = "default"
   enable_dns_hostnames = "true"
-  enable_dns_support = "true"
+  enable_dns_support   = "true"
   tags = {
     "Name" = "myvpc"
   }
@@ -10,10 +10,10 @@ resource "aws_vpc" "myvpc" {
 
 # creating public subnet
 resource "aws_subnet" "public-subnet" {
-  vpc_id     = aws_vpc.myvpc.id
-  cidr_block = "10.0.0.0/27"
+  vpc_id                  = aws_vpc.myvpc.id
+  cidr_block              = "10.0.0.0/27"
   map_public_ip_on_launch = "true"
-  availability_zone = "ap-south-1a"
+  availability_zone       = "ap-south-1a"
   tags = {
     Name = "public-subnet"
   }
@@ -21,10 +21,10 @@ resource "aws_subnet" "public-subnet" {
 
 # creating private subnet
 resource "aws_subnet" "private-subnet" {
-  vpc_id     = aws_vpc.myvpc.id
-  cidr_block = "10.0.0.32/27"
+  vpc_id                  = aws_vpc.myvpc.id
+  cidr_block              = "10.0.0.32/27"
   map_public_ip_on_launch = "true"
-  availability_zone = "ap-south-1a"
+  availability_zone       = "ap-south-1a"
   tags = {
     Name = "private-subnet"
   }
